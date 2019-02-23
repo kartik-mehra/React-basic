@@ -17,7 +17,8 @@ class App extends Component {
       {"id":"3","name" : "Achhu","age":10}
       ],
       otherState : "Tst",
-      showPerson : false
+      showPerson : false,
+      cockpit : true
       }
       
   }
@@ -26,9 +27,9 @@ class App extends Component {
     return state;
   }
 
-  componentDidMount(){
-    console.log("[App.js] componentDidMount");
-  }
+  // componentDidMount(){
+  //   console.log("[App.js] componentDidMount");
+  // }
 // state = {
 // persons : [
 // {"id":"1","name" : "Kartik","age":11},
@@ -105,12 +106,15 @@ My Hobbies : Gaming
 
 return (
 <div className={classes.App}>
-<Cockpit 
+<button onClick = {() => {this.setState({
+  cockpit:!this.state.cockpit
+})}}>ClickME</button>
+{this.state.cockpit ? <Cockpit 
 title = {this.props.title}
 toggle = {this.toggleHandler}
 showPerson = {this.state.showPerson}
 persons = {
-  this.state.persons}/>
+  this.state.persons}/>:null}
 {persons}
   {/* {this.state.showPerson?:null} */}
 </div>
